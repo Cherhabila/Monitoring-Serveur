@@ -1,0 +1,12 @@
+groups:
+  - name: alertes_infrastructure
+    rules:
+      - alert: NodeDown
+        # Si la métrique up vaut 0 (machine injoignable) pendant plus de 1 minute
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Le serveur {{ $labels.instance }} est DOWN"
+          description: "L'instance {{ $labels.instance }} du job {{ $labels.job }} ne répond plus à Prometheus depuis plus d'une minute."

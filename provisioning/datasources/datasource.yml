@@ -1,0 +1,9 @@
+piVersion: 1
+
+datasources:
+  - name: prometheus
+    type: prometheus
+    access: proxy
+    url: http://logiciel-prometheus:9090
+    isDefault: true
+    editable: true

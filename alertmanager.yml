@@ -1,0 +1,19 @@
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'votre_adresse_alerte@gmail.com'
+  smtp_auth_username: 'votre_adresse_alerte@gmail.com'
+  smtp_auth_password: 'votre_mot_de_passe_d_application'
+  smtp_require_tls: true
+
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 5m
+  repeat_interval: 3h
+  receiver: 'equipe-sysadmin'
+
+receivers:
+- name: 'equipe-sysadmin'
+  email_configs:
+  - to: 'votre_adresse_personnelle@domain.com'
+    send_resolved: true
